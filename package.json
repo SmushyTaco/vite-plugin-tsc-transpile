@@ -1,0 +1,62 @@
+{
+  "name": "vite-plugin-tsc-transpile",
+  "version": "1.0.0",
+  "description": "This Vite plugin makes it so the official TypeScript compiler is used instead of esbuild!",
+  "type": "module",
+  "license": "MIT",
+  "private": false,
+  "author": {
+    "name": "SmushyTaco",
+    "email": "personal@nikanradan.com"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18.12.0",
+    "npm": ">=8.19.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SmushyTaco/vite-plugin-tsc-transpile.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SmushyTaco/vite-plugin-tsc-transpile/issues"
+  },
+  "scripts": {
+    "clean": "del-cli dist",
+    "build": "npm run clean && npx vite build",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@eslint/js": "^9.17.0",
+    "@smushytaco/versionchecker": "^1.0.2",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.2",
+    "@typescript-eslint/parser": "^8.18.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^6.0.6",
+    "vite-plugin-dts": "^4.4.0",
+    "globals": "^15.14.0",
+    "del-cli": "^6.0.0"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.7.2"
+  }
+}
