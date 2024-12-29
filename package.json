@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-tsc-transpile",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This Vite plugin makes it so the official TypeScript compiler is used instead of esbuild!",
   "type": "module",
   "license": "MIT",
@@ -11,11 +11,17 @@
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.cts",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "files": [
