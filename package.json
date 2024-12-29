@@ -44,7 +44,7 @@
     "url": "https://github.com/SmushyTaco/vite-plugin-tsc-transpile/issues"
   },
   "scripts": {
-    "clean": "del-cli dist",
+    "clean": "npx del-cli dist",
     "build": "npm run clean && npx vite build",
     "prepare": "npm run build"
   },
