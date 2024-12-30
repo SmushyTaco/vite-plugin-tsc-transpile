@@ -41,8 +41,6 @@ export default defineConfig({
 
 ```
 
-This will create the normal `style.css` and an additional `style.rtl.css`.
-
 ## Options
 
 ```ts

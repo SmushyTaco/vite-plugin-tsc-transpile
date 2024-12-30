@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-tsc-transpile",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This Vite plugin makes it so the official TypeScript compiler is used instead of esbuild!",
   "type": "module",
   "license": "MIT",
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@types/node": "^22.10.2",
     "@eslint/js": "^9.17.0",
-    "@smushytaco/versionchecker": "^1.0.2",
+    "@smushytaco/versionchecker": "^1.0.3",
     "prettier": "^3.4.2",
     "typescript": "^5.7.2",
     "@typescript-eslint/eslint-plugin": "^8.18.2",
