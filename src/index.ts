@@ -1,6 +1,6 @@
 import { Plugin } from 'vite';
 import ts from 'typescript';
-import path from 'path';
+import path from 'node:path';
 
 type ViteTscPluginOptions = {
     tsConfigPath?: string; // Optional parameter to specify custom tsconfig path
@@ -21,12 +21,12 @@ function viteTscPlugin(options: ViteTscPluginOptions = {}): Plugin {
         async transform(code, id) {
             // Only process TypeScript files
             if (!id.endsWith('.ts') && !id.endsWith('.tsx')) {
-                return null;
+                return;
             }
 
             // Resolve the TypeScript configuration
             const tsConfigPath =
-                options.tsConfigPath ||
+                options.tsConfigPath ??
                 ts.findConfigFile(
                     path.dirname(id),
                     ts.sys.fileExists,
@@ -40,7 +40,7 @@ function viteTscPlugin(options: ViteTscPluginOptions = {}): Plugin {
             const tsConfig = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
             if (tsConfig.error) {
                 throw new Error(
-                    `Error reading tsconfig.json: ${tsConfig.error.messageText}`
+                    `Error reading tsconfig.json: ${ts.flattenDiagnosticMessageText(tsConfig.error.messageText, '\n', 4)}`
                 );
             }
 
@@ -76,7 +76,7 @@ function viteTscPlugin(options: ViteTscPluginOptions = {}): Plugin {
 
             let map = output.sourceMapText
                 ? JSON.parse(output.sourceMapText)
-                : null;
+                : undefined;
 
             if (sourcemapOption === 'inline' && output.sourceMapText) {
                 // Append the source map as a data URI
